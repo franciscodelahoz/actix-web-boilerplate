@@ -1,7 +1,9 @@
 {
     "cSpell.words": [
-        "actix",
-        "qrcode",
-        "urlencoding"
+      "actix",
+      "qrcode",
+      "urlencoding",
+      "vcalendar",
+      "vcard"
     ]
 }
