@@ -1,6 +1,7 @@
 use serde::{Serialize, Deserialize};
+use utoipa::{ToSchema, IntoParams};
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, ToSchema, IntoParams)]
 pub struct QrWifiQuery {
     pub ssid: String,
     pub encryption: String,
@@ -8,25 +9,25 @@ pub struct QrWifiQuery {
     pub hidden: Option<bool>,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, ToSchema, IntoParams)]
 pub struct QrSMSQuery {
     pub phone: String,
     pub message: String,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, ToSchema, IntoParams)]
 pub struct QrEmailQuery {
     pub email: String,
     pub subject: String,
     pub body: String,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, ToSchema, IntoParams)]
 pub struct QrPhoneQuery {
     pub phone: String,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, ToSchema, IntoParams)]
 pub struct QrVCardQuery {
     pub first_name: String,
     pub last_name: String,
@@ -38,7 +39,7 @@ pub struct QrVCardQuery {
     pub url: String,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, ToSchema, IntoParams)]
 pub struct QrVCalendarQuery {
     pub title: String,
     pub description: String,
