@@ -11,6 +11,7 @@ use actix_web::{ HttpServer, App, web, Responder, HttpResponse };
 use std::io::Result;
 use env_logger::Env;
 
+use crate::libraries::middlewares::correlation_id::{CorrelationId, CorrelationIdVariable};
 use crate::routes::monitoring;
 use crate::routes::qr_codes as qr_codes_router;
 use utoipa_swagger_ui::SwaggerUi;
@@ -33,7 +34,11 @@ async fn main() -> Result<()> {
 
     HttpServer::new(|| {
         App::new()
-            .wrap(Logger::default())
+            .wrap(
+                Logger::new("[%{correlation_id}xi] %a \"%r\" %s %b \"%{Referer}i\" \"%{User-Agent}i\" %T")
+                .add_correlation_id(),
+            )
+            .wrap(CorrelationId::new())
             .service(
                 web::scope("/api")
                     .configure(qr_codes_router::configure)

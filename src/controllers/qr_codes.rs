@@ -1,4 +1,5 @@
 use actix_web::{web, HttpResponse, Responder};
+use log;
 
 use crate::libraries::schemas::qr_codes::{
     QrEmailQuery,
@@ -31,6 +32,8 @@ use crate::services::qr_codes::{
 #[actix_web::get("/wifi")]
 pub async fn qr_wifi_handler(query: web::Query<QrWifiQuery>) -> impl Responder {
     let qr_svg = generate_qr_wifi_code(&query);
+
+    log::info!("Generated WiFi QR code for SSID: {}", query.ssid);
 
     HttpResponse::Ok()
         .content_type("image/svg+xml")
