@@ -133,7 +133,6 @@ pub trait RequestCorrelationId {
     fn correlation_id(&self) -> String;
 }
 
-
 impl RequestCorrelationId for ServiceRequest {
     fn correlation_id(&self) -> String {
         self.extensions().get::<String>().cloned().unwrap_or_else(|| DEFAULT_CORRELATION_ID.to_string())
