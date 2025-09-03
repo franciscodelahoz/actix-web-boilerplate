@@ -1,4 +1,4 @@
-# Actix Web Boilerplate Template
+# Actix Web Boilerplate
 
 This project is a template for building RESTful APIs in Rust using [Actix Web](https://actix.rs/). It includes best practices, useful middlewares, and a modular structure to make development and maintenance easier.
 
